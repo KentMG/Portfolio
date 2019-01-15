@@ -3,7 +3,7 @@ html{
 }
 
 div{
-	background-color: #00AFA0;
+	text-align: center;
 }
 
 h1, h3{
@@ -28,9 +28,11 @@ p{
 }
 
 .Row{
-	display: table;
-	table-layout: fixed;
-	height: 200px;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-evenly;
+	min-height: 200px;
 }
 
 .Column{
@@ -38,6 +40,8 @@ p{
 }
 
 #contactDiv{
+	margin-left:auto;
+	margin-right:auto;
 	width: 200px;
 	height: 150px;
 }
