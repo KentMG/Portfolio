@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--Coded by Kent Gunn-->
+<!--Ladt Edited 15th November 2018-->
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./Index.css">
+        <script>
+            function HTMLButton(){
+                alert("Learn HTML");
+            }
+            function CSSButton(){
+                alert("Learn CSS");
+            }
+            function JSButton(){
+                alert("Learn Javascript");    
+            }
+        </script>
+    </head>
+    <body>
+        <div id=Top>
+                <img id=IBImage height= "10%" width="10%" src="./images/ib_logo.png"></img>
+        </div>
+        <div id=Yellowbox>
+            <table>
+                <tr>
+                    <td id=Text>
+                        <h2>I am Bham</h2>
+                        <h3>Calling all Pioneers, Builders, The Curious, and The Determined...</h3>
+                        <p>From steel factories to start-ups, this city of artisans has relied on the strength and the skills of its people. Innovate Birmingham will propel the next generation of pioneers on the frontier of the tech economy.</p>
+                        <button class="Yellow">Learn More</button>
+                    </td>
+                    <td>
+                        <img id="Mac" height= 325px src="./images/mac.png"></img>
+                    </td>
+            </table>
+        </div>
+        <br/>
+        <div>
+            <table id=Links>
+                <td>
+                    <img height= 115px src="./images/html.png"><br/>
+                    <p class="Links">Learn HTML. Markup for your webpages!</p>
+                    <br/>
+                    <input onclick="HTMLButton();" type="button" id="HTMLButton" value="Learn More"></input>
+                </td>
+                <td>
+                    <img height= 115px src="./images/css.png"><br/>
+                    <p class="Links">Style your HTML with CSS!</p>
+                    <br/>
+                    <input onclick="CSSButton();" type="button" id="CSSButton" value="Learn More"></input>
+                </td>
+                <td>
+                    <img height= 115px src="./images/js.png"><br/>
+                    <p class="Links">Want anything to do anything. Then you need JS!</p>
+                    <br/>
+                    <input onclick="JSButton();" type="button" id="JSButton" value="Learn More"></input\>
+                </td>
+            </table>
+        </div>
+    </body>
+</html>

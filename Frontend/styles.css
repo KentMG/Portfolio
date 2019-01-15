@@ -2,6 +2,34 @@ html{
 	background-color:black;
 }
 
+a{
+	text-decoration: none;
+}
+a:link{
+	color: #FFA00A;
+}
+a:visited{
+	color: #FFA00A;
+	text-decoration-line: underline !important;
+}
+a:hover{
+	color: #FFFF00;
+}
+
+a>div>p{
+	text-decoration: none;
+}
+a:link>div>p{
+	color: #FFA00A;
+}
+a:visited>div>p{
+	color: #FFA00A;
+	text-decoration-line: underline !important;
+}
+a:hover>div>p{
+	color: #FFFF00;
+}
+
 div{
 	text-align: center;
 }
