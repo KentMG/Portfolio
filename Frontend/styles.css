@@ -2,13 +2,42 @@ html{
 	background-color:black;
 }
 
+div{
+	background-color: #00AFA0;
+}
 
-h1{
+h1, h3{
 	color: gold;
-	background-color: black;
 	text-align:center;
 }
 
+img{
+	width: 200px;
+	height 125px;
+	text-align: center;
+}
+
 p{
-	color: FFF00F;
+	color: #FFA00A;
+	text-align:center;
+}
+
+.contentDiv{
+	width: 200px;
+	height: 150px;
+}
+
+.Row{
+	display: table;
+	table-layout: fixed;
+	height: 200px;
+}
+
+.Column{
+	display: table-cell;
+}
+
+#contactDiv{
+	width: 200px;
+	height: 150px;
 }
