@@ -9,35 +9,43 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-	<h1>TIC-TAC-TOE</h1>
-	<h4 id="TurnIndicator">X's Turn</h4>
 	<div class="board">
-		<div>
-			<input class="button" type="button" value="" id="TopLeft" onclick="makeMove(this.id)"/>
+		<div class="staticDiv">
+			<h1>TIC-TAC-TOE</h1>
+			<h4 id="TurnIndicator">X's Turn</h4>
 		</div>
-		<div>
-			<input class="button" type="button" value="" id="TopMiddle" onclick="makeMove(this.id)"/>
+		<div class="board">
+			<div>
+				<input class="button" type="button" value="" id="TopLeft" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="TopMiddle" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="TopRight" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="MiddleLeft" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="MiddleMiddle" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="MiddleRight" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="BottomLeft" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="BottomMiddle" onclick="makeMove(this.id)"/>
+			</div>
+			<div>
+				<input class="button" type="button" value="" id="BottomRight" onclick="makeMove(this.id)"/>
+			</div>
 		</div>
-		<div>
-			<input class="button" type="button" value="" id="TopRight" onclick="makeMove(this.id)"/>
-		</div>
-		<div>
-			<input class="button" type="button" value="" id="MiddleLeft" onclick="makeMove(this.id)"/>
-		</div>
-		<div>
-			<input class="button" type="button" value="" id="MiddleMiddle" onclick="makeMove(this.id)"/>
-		</div>
-		<div>
-			<input class="button" type="button" value="" id="MiddleRight" onclick="makeMove(this.id)"/>
-		</div>
-		<div>
-			<input class="button" type="button" value="" id="BottomLeft" onclick="makeMove(this.id)"/>
-		</div>
-		<div>
-			<input class="button" type="button" value="" id="BottomMiddle" onclick="makeMove(this.id)"/>
-		</div>
-		<div>
-			<input class="button" type="button" value="" id="BottomRight" onclick="makeMove(this.id)"/>
+		<br>
+		<div class="staticDiv">
+			<input type="button" value="Reset Game" id= "gameReset" onclick="resetGame()"/>
 		</div>
 	</div>
 </body>
