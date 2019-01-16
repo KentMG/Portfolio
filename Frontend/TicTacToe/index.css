@@ -1,0 +1,30 @@
+*{
+	background-color: #000000;
+	color: #FF0000;
+	text-align: center;
+}
+
+div>p{
+	background-color: #2A2A2A;
+	width:150px;
+	height:150px;
+}
+
+.board{
+	display: flex;
+	flex-Direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	min-height: 150px;
+	width: 525px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.button{
+	font-size: 90pt;
+	width: 150px;
+	height: 150px;
+	background-color: #2A2A2A;
+	border= 0px;
+}
