@@ -112,7 +112,17 @@ function checkForWin(){
 	var BM = document.getElementById('BottomMiddle').value;;
 	var BR = document.getElementById('BottomRight').value;
 
-/*	if((TL=="X" && TM=="X" && TR=="X") || (ML=="X" && "MM="X" && MR=="X") || (BL=="X" && BM=="X" BR=="X") || (TL=="X" && ML=="X" && BL=="X") || (TM=="X" && MM=="X" && BM=="X") || (TR=="X" && MR=="X" && BR=="X") || (TL=="X" && MM=="X" && BR=="X") || (TR=="X" && MM=="X" && BL=="X")){
-	document.getElementByID('TurnIndicator').innerHTML="X WINS!!!";
-}*/
+
+	if(TL == "X" && TM == "X" && TR == "X" || ML == "X" && MM == "X" && MR == "X" || BL == "X" && BM == "X" && BR == "X" || TL == "X" && ML == "X" && BL == "X" || TM == "X" && MM == "X" && BM == "X" || TR == "X" && MR == "X" && BR == "X" || TL == "X" && MM == "X" && BR == "X"){
+		document.getElementById('TurnIndicator').innerHTML="X WINS";
+	}
+	if(TR == "X" && MM == "X" && BL == "X"){
+		document.getElementById('TurnIndicator').innerHTML="X WINS";
+	}
+	if(TL == "O" && TM == "O" && TR == "O" || ML == "O" && MM == "O" && MR == "O" || BL == "O" && BM == "O" && BR == "O" || TL == "O" && ML == "O" && BL == "O" || TM == "O" && MM == "O" && BM == "O" || TR == "O" && MR == "O" && BR == "O" || TL == "O" && MM == "O" && BR == "O"){
+		document.getElementById('TurnIndicator').innerHTML="O WINS";
+	}
+	if(TR == "O" && MM == "O" && BL == "O"){
+		document.getElementById('TurnIndicator').innerHTML="O WINS";
+	}
 }
