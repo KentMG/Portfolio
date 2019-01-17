@@ -95,6 +95,9 @@ function makeMove(value){
 	if(document.getElementById('playerCount').innerHTML=="1" && document.getElementById('TurnIndicator').innerHTML=="O's Turn"){
 		oAIMove();
 	}
+	else if(document.getElementById('playerCount').innerHTML=="1" && document.getElementById('TurnIndicator').innerHTML=="X's Turn"){
+		xAIMove();
+	}
 }
 
 function changeTurn(){
@@ -111,6 +114,7 @@ function setPlayerCount(value){
 	if(value=="1 Player"){
 		document.getElementById('playerCount').innerHTML="1";
 		document.getElementById('playerX').style.display='inline';
+		document.getElementById('playerO').style.display='inline';
 		document.getElementById('1player').style.display='none';
 		document.getElementById('2player').style.display='none';
 	}
@@ -125,6 +129,7 @@ function setPlayerCount(value){
 function viewBoard(){
 	
 	document.getElementById('playerX').style.display='none';
+	document.getElementById('playerO').style.display='none';
 	document.getElementById('TurnIndicator').style.display='inline';
 	document.getElementById('gameBoard').style.display='flex';
 	document.getElementById('TopLeft').style.display='inline';
@@ -143,9 +148,14 @@ function setPlayerType(value){
 	
 	if(value=="Play as X"){
 		document.getElementById('playerType').innerHTML="X";
+		viewBoard();
+	}
+	else if(value=="Play as O"){
+		document.getElementById('playerType').innerHTML="O";
+		viewBoard();
+		xAIMove();
 	}
 	
-	viewBoard();
 
 }
 
@@ -220,6 +230,35 @@ function tryWin(){
 			
 		checkForWin();
 	}
+	else if(TI=="X's Turn"){
+
+		if(TL=="X"&&TM=="X"&&TR==""||MR=="X"&&BR=="X"&TR==""||BL=="X"&&MM=="X"&&TR==""){
+			document.getElementById('TopRight').value="X";
+		}	
+		else if(TL=="X"&&TR=="X"&&TM==""||MM=="X"&&BM=="X"&TM==""){
+			document.getElementById('TopMiddle').value="X";
+		}	
+		else if(TR=="X"&&TM=="X"&&TL==""||ML=="X"&&BL=="X"&TL==""||BR=="X"&&MM=="X"&&TL==""){
+			document.getElementById('TopLeft').value="X";
+		}
+		else if(ML=="X"&&MM=="X"&&MR==""||TR=="X"&&BR=="X"&MR==""){
+			document.getElementById('MiddleRight').value="X";
+		}	
+		else if(MR=="X"&&MM=="X"&&ML==""||TL=="X"&&BL=="X"&ML==""){ 
+			document.getElementById('MiddleLeft').value="X";
+		}	
+		else if(BL=="X"&&BM=="X"&&BR==""||MR=="X"&&TR=="X"&BR==""||TL=="X"&&MM=="X"&&BR==""){
+			document.getElementById('BottomRight').value="X";
+		}	
+		else if(MM=="X"&&TM=="X"&&BM==""||BR=="X"&&BL=="X"&BM==""){ 
+			document.getElementById('BottomMiddle').value="X";
+		}	
+		else if(BR=="X"&&BM=="X"&&BL==""||ML=="X"&&TL=="X"&BL==""||TR=="X"&&MM=="X"&&BL==""){
+			document.getElementById('BottomLeft').value="X";
+		}	
+			
+		checkForWin();
+	}
 }
 
 function tryBlock(){
@@ -267,6 +306,41 @@ function tryBlock(){
 		}	
 		else if(BR=="X"&&BM=="X"&&BL==""||ML=="X"&&TL=="X"&BL==""||TR=="X"&&MM=="X"&&BL==""){
 			document.getElementById('BottomLeft').value="O";
+			changeTurn();
+		}	
+	}
+	else if(TI=="X's Turn"){
+		
+		if(TL=="O"&&TM=="O"&&TR==""||MR=="O"&&BR=="O"&TR==""||BL=="O"&&MM=="O"&&TR==""){
+			document.getElementById('TopRight').value="X";
+			changeTurn();
+		}	
+		else if(TL=="O"&&TR=="O"&&TM==""||MM=="O"&&BM=="O"&TM==""){
+			document.getElementById('TopMiddle').value="X";
+			changeTurn();
+		}	
+		else if(TR=="O"&&TM=="O"&&TL==""||ML=="O"&&BL=="O"&TL==""||BR=="O"&&MM=="O"&&TL==""){
+			document.getElementById('TopLeft').value="X";
+			changeTurn();
+		}
+		else if(ML=="O"&&MM=="O"&&MR==""||TR=="O"&&BR=="O"&MR==""){
+			document.getElementById('MiddleRight').value="X";
+			changeTurn();
+		}	
+		else if(MR=="O"&&MM=="O"&&ML==""||TL=="O"&&BL=="O"&ML==""){ 
+			document.getElementById('MiddleLeft').value="X";
+			changeTurn();
+		}	
+		else if(BL=="O"&&BM=="O"&&BR==""||MR=="O"&&TR=="O"&BR==""||TL=="O"&&MM=="O"&&BR==""){
+			document.getElementById('BottomRight').value="X";
+			changeTurn();
+		}	
+		else if(MM=="O"&&TM=="O"&&BM==""||BR=="O"&&BL=="O"&BM==""){ 
+			document.getElementById('BottomMiddle').value="X";
+			changeTurn();
+		}	
+		else if(BR=="O"&&BM=="O"&&BL==""||ML=="O"&&TL=="O"&BL==""||TR=="O"&&MM=="O"&&BL==""){
+			document.getElementById('BottomLeft').value="X";
 			changeTurn();
 		}	
 	}
@@ -631,3 +705,102 @@ function resetGame(){
 	document.getElementById('TurnCount').innerHTML="0"
 	document.getElementById('gameReset').style.visibility='hidden';
 }
+
+function xAIMove(){
+	
+	var TL = document.getElementById('TopLeft').value;
+	var TM = document.getElementById('TopMiddle').value;
+	var TR = document.getElementById('TopRight').value;
+	var ML = document.getElementById('MiddleLeft').value;
+	var MM = document.getElementById('MiddleMiddle').value;
+	var MR = document.getElementById('MiddleRight').value;
+	var BL = document.getElementById('BottomLeft').value;
+	var BM = document.getElementById('BottomMiddle').value;;
+	var BR = document.getElementById('BottomRight').value;
+	var TC = document.getElementById('TurnCount').innerHTML;
+	var Random = Math.floor(Math.random()*10)%4;
+	var Random2 = Math.floor(Math.random()*100)%7;
+
+	//TRY TO WIN AND IF NOT WIN THEN BLOCK
+
+	if(document.getElementById('TurnIndicator').innerHTML=="X's Turn"){
+		tryWin();
+		tryBlock();
+	}
+
+	// IF NO WIN OR BLOCK MAKE A MOVE
+	
+	if(document.getElementById('TurnIndicator').innerHTML=="X's Turn"){
+		
+		if(TC=="0"){
+			document.getElementById('MiddleMiddle')="X";
+		}
+
+		if(TC=="2"){
+			if(TL=="O"||TR=="O"||BR=="O"||BL=="O"){
+				if(TL=="O"){
+					document.getElementById('BottomRight').value="X";
+				}
+				else if(TR=="O"){
+					document.getElementById('BottomLeft').value="X";
+				}
+				else if(BL=="O"){
+					document.getElementById('TopRight').value="X";
+				}
+				else if(BR=="O"){
+					document.getElementById('TopLeft').value="X";
+				}
+			}
+
+			if(TM=="O"||MR=="O"||BM=="O"||ML=="O"){
+				if(Random2=="0"){
+					document.getElementById('TopLeft').value="X";
+				}
+				else if(Random2=="1"){
+					document.getElementById('TopRight').value="X";
+				}
+				else if(Random2=="2"){
+					document.getElementById('BottomLeft').value="X";
+				}
+				else if(Random2=="3"){
+					document.getElementById('BottomRight').value="X";
+				}
+				else if(Random2=="4"){
+					if(TM=="O"){
+						document.getElementById('MiddleRight').value="X";
+					}
+					else{
+						document.getElementById('TopMiddle').value="X";
+					}
+				}
+				else if(Random2=="5"){
+					if(MR=="O"){
+						document.getElementById('BottomMiddle').value="X";
+					}
+					else{
+						document.getElementById('MiddleRight').value="X";
+					}
+				}
+				else if(Random2=="6"){
+					if(BM=="O"){
+						document.getElementById('MiddleLeft').value="X";
+					}
+					else{
+						document.getElementById('BottomMiddle').value="X";
+					}
+				}
+				else if(Random2=="7"){
+					if(ML=="O"){
+						document.getElementById('TopMiddle').value="X";
+					}
+					else{
+						document.getElementById('MiddleLeft').value="X";
+					}
+				}
+			}	
+		}
+		changeTurn();
+		checkForWin();
+	}
+}
+
