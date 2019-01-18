@@ -1,0 +1,34 @@
+*{
+	justify-content: center;
+	text-align: center;
+	background-color: #000000;
+}
+
+h1{
+	color: #FF0000;
+}
+
+div{
+	display: flex;
+	flex-wrap: wrap;
+	width :250px;
+}
+
+input{
+	color: #FF0000;
+	font-size: 15pt;
+}
+
+h3{
+	background-color: #2A2A2A;
+}
+
+.friend->h3{
+	font: Uppercase;
+}
+
+.friend{
+	margin:0 Auto;
+	width: 300px;
+	background-color: #2A2A2A;
+}
