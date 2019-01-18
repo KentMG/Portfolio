@@ -153,7 +153,8 @@ function setPlayerType(value){
 	else if(value=="Play as O"){
 		document.getElementById('playerType').innerHTML="O";
 		viewBoard();
-		xAIMove();
+		document.getElementById('MiddleMiddle').value="X";
+		changeTurn();
 	}
 	
 
