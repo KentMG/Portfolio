@@ -48,10 +48,12 @@
 			<input type="button" value="Reset Game" id= "gameReset" onclick="resetGame()"/>
 		</div>
 		<div>
+			<!--	<input type="button" class="playerChoice" value="0 Player" id="0player" onclick="setPlayerCount(this.value)"/> -->
 			<input type="button" class="playerChoice" value="1 Player" id="1player" onclick="setPlayerCount(this.value)"/>
 			<input type="button" class="playerChoice" value="2 Player" id="2player" onclick="setPlayerCount(this.value)"/>
 			<p id="playerCount" class="game"></p>
 			<input class="game playerChoice" type="button" value="Play as X" id="playerX" onclick="setPlayerType(this.value)"/>
+			<input class="game playerChoice" type="button" value="Play as O" id="playerO" onclick="setPlayerType(this.value)"/>
 			<p id="playerType"class="game"></p>
 			<p id="TurnCount"class="game">0</p>
 		</div>
