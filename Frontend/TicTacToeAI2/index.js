@@ -92,12 +92,13 @@ function makeMove(value){
 	
 	checkForWin();
 
-	if(document.getElementById('playerCount').innerHTML=="1" && document.getElementById('TurnIndicator').innerHTML=="O's Turn"){
+	if(document.getElementById('playerCount').innerHTML=="1" && document.getElementById('playerType').innerHTML=="X" && document.getElementById('TurnIndicator').innerHTML=="O's Turn"){
 		oAIMove();
 	}
-	else if(document.getElementById('playerCount').innerHTML=="1" && document.getElementById('TurnIndicator').innerHTML=="X's Turn"){
+	else if(document.getElementById('playerCount').innerHTML=="1" && document.getElementById('playerType').innerHTML=="O" && document.getElementById('TurnIndicator').innerHTML=="X's Turn"){
 		xAIMove();
 	}
+	checkForWin();
 }
 
 function changeTurn(){
@@ -111,15 +112,35 @@ function changeTurn(){
 }
 
 function setPlayerCount(value){
+/*	if(value=="0 Player"){
+		viewBoard();
+		document.getElementById('0player').style.display='none';
+		document.getElementById('1player').style.display='none';
+		document.getElementById('2player').style.display='none';
+		document.getElementById('MiddleMiddle').value="X";
+		document.getElementById('TurnCount').innerHTML="1";
+		document.getElementById('TurnIndicator').innerHTML="O's Turn";
+		oAIMove();
+		xAIMove();
+		oAIMove();
+		xAIMove();
+		oAIMove();
+		xAIMove();
+		oAIMove();
+		xAIMove();
+		checkForWin();
+	}*/
 	if(value=="1 Player"){
 		document.getElementById('playerCount').innerHTML="1";
 		document.getElementById('playerX').style.display='inline';
 		document.getElementById('playerO').style.display='inline';
+		document.getElementById('0player').style.display='none';
 		document.getElementById('1player').style.display='none';
 		document.getElementById('2player').style.display='none';
 	}
 	if(value=="2 Player"){
 		document.getElementById('playerCount').innerHTML="2";
+		document.getElementById('0player').style.display='none';
 		document.getElementById('1player').style.display='none';
 		document.getElementById('2player').style.display='none';
 		viewBoard();
@@ -152,6 +173,9 @@ function setPlayerType(value){
 	}
 	else if(value=="Play as O"){
 		document.getElementById('playerType').innerHTML="O";
+		document.getElementById('MiddleMiddle').value="X";
+		document.getElementById('TurnIndicator').innerHTML="O's Turn";
+		document.getElementById('TurnCount').innerHTML="1";
 		viewBoard();
 		xAIMove();
 	}
@@ -545,6 +569,14 @@ function oAIMove(){
 					document.getElementById('BottomMiddle').value="O";
 				}
 			}	
+			else if (TM=="" && BM==""){
+				if(Random=="1"||Random=="3"){
+					document.getElementById('TopMiddle').value="O";
+				}
+				else if(Random=="2"||Random=="0"){
+					document.getElementById('BottomMiddle').value="O";
+				}
+			}
 			else if(ML==""&&MR==""){
 				if(Random=="1"||Random=="3"){
 					document.getElementById('MiddleLeft').value="O";
@@ -692,18 +724,43 @@ function checkForWin(){
 }
 
 function resetGame(){
+	if(document.getElementById('playerType').innerHTML=="O"){
+		document.getElementById('MiddleMiddle').value="X";
+		document.getElementById('TurnIndicator').innerHTML="O's Turn";
+		document.getElementById('TurnCount').innerHTML="1";
+	}
+	else if(document.getElementById('playerType').innerHTML!="O"){
+		document.getElementById('TurnIndicator').innerHTML="X's Turn";
+		document.getElementById('TurnCount').innerHTML="0"
+		document.getElementById('MiddleMiddle').value="";
+	}
 	document.getElementById('TopLeft').value="";
 	document.getElementById('TopMiddle').value="";
 	document.getElementById('TopRight').value="";
 	document.getElementById('MiddleLeft').value="";
-	document.getElementById('MiddleMiddle').value="";
 	document.getElementById('MiddleRight').value="";
 	document.getElementById('BottomLeft').value="";
 	document.getElementById('BottomMiddle').value="";
 	document.getElementById('BottomRight').value="";
-	document.getElementById('TurnIndicator').innerHTML="X's Turn"
-	document.getElementById('TurnCount').innerHTML="0"
 	document.getElementById('gameReset').style.visibility='hidden';
+/*	if(value=="0 Player"){
+		viewBoard();
+		document.getElementById('0player').style.display='none';
+		document.getElementById('1player').style.display='none';
+		document.getElementById('2player').style.display='none';
+		document.getElementById('MiddleMiddle').value="X";
+		document.getElementById('TurnCount').innerHTML="1";
+		document.getElementById('TurnIndicator').innerHTML="O's Turn";
+		oAIMove();
+		xAIMove();
+		oAIMove();
+		xAIMove();
+		oAIMove();
+		xAIMove();
+		oAIMove();
+		xAIMove();
+		checkForWin();
+	}*/
 }
 
 function xAIMove(){
@@ -719,10 +776,11 @@ function xAIMove(){
 	var BR = document.getElementById('BottomRight').value;
 	var TC = document.getElementById('TurnCount').innerHTML;
 	var Random = Math.floor(Math.random()*10)%4;
-	var Random2 = Math.floor(Math.random()*100)%7;
+	var Random2 = Math.floor(Math.random()*100)%4;
+	var Random3 = Math.floor(Math.random()*100)%3;
 
 	//TRY TO WIN AND IF NOT WIN THEN BLOCK
-
+	
 	if(document.getElementById('TurnIndicator').innerHTML=="X's Turn"){
 		tryWin();
 		tryBlock();
@@ -765,39 +823,145 @@ function xAIMove(){
 				else if(Random2=="3"){
 					document.getElementById('BottomRight').value="X";
 				}
-				else if(Random2=="4"){
-					if(TM=="O"){
-						document.getElementById('MiddleRight').value="X";
+			}
+		}
+
+		if(TC=="4"){
+			if(TL=="O"){
+				if(TR==""&&BL==""){
+					if(MR==""){
+						document.getElementById('TopRight').value="X";
 					}
 					else{
-						document.getElementById('TopMiddle').value="X";
+						document.getElementById('BottomLeft').value="X";
 					}
 				}
-				else if(Random2=="5"){
-					if(MR=="O"){
-						document.getElementById('BottomMiddle').value="X";
+			}
+			else if(TR=="O"){
+				if(TL==""&&BR==""){
+					if(BM==""){
+						document.getElementById('BottomRight').value="X";
 					}
 					else{
-						document.getElementById('MiddleRight').value="X";
+						document.getElementById('TopLeft').value="X";
 					}
 				}
-				else if(Random2=="6"){
-					if(BM=="O"){
-						document.getElementById('MiddleLeft').value="X";
+			}
+			else if(BR=="O"){
+				if(TR==""&&BL==""){
+					if(ML==""){
+						document.getElementById('BottomLeft').value="X";
 					}
 					else{
-						document.getElementById('BottomMiddle').value="X";
+						document.getElementById('TopRight').value="X";
 					}
 				}
-				else if(Random2=="7"){
-					if(ML=="O"){
-						document.getElementById('TopMiddle').value="X";
+			}
+			else if(BL=="O"){
+				if(TL==""&&BR==""){
+					if(MR==""){
+						document.getElementById('BottomRight').value="X";
 					}
 					else{
-						document.getElementById('MiddleLeft').value="X";
+						document.getElementById('TopLeft').value="X";
 					}
 				}
-			}	
+			}
+		}
+		if(TC=="6"){
+			if(TL==""||TR==""&&TM==""&&BM==""){
+				if(Random3=="0"){
+					if(TL==""){
+						document.getElementById('TopLeft').value="X";
+					}
+					else if(TR==""){
+						document.getElementById('TopRight').value="X";
+					}
+				}
+				if(Random3=="1"){
+					document.getElementById('TopMiddle').value="X";
+				}
+				if(Random3=="2"){
+					document.getElementById('BottomMiddle').value="X";
+				}
+			}
+			else if(BR==""||TR==""&&MR==""&&ML==""){
+				if(Random3=="0"){
+					if(BR==""){
+						document.getElementById('BottomRight').value="X";
+					}
+					else if(TR==""){
+						document.getElementById('TopRight').value="X";
+					}
+				}
+				if(Random3=="1"){
+					document.getElementById('MiddleLeft').value="X";
+				}
+				if(Random3=="2"){
+					document.getElementById('MiddleRight').value="X";
+				}
+			}
+			else if(BL==""||BR==""&&TM==""&&BM==""){
+				if(Random3=="0"){
+					if(BL==""){
+						document.getElementById('BottomLeft').value="X";
+					}
+					else if(BR==""){
+						document.getElementById('BottomRight').value="X";
+					}
+				}
+				if(Random3=="1"){
+					document.getElementById('TopMiddle').value="X";
+				}
+				if(Random3=="2"){
+					document.getElementById('BottomMiddle').value="X";
+				}
+			}
+			else if(BL==""||TL==""&&MR==""&&ML==""){
+				if(Random3=="0"){
+					if(BL==""){
+						document.getElementById('BottomLeft').value="X";
+					}
+					else if(TL==""){
+						document.getElementById('TopLeft').value="X";
+					}
+				}
+				if(Random3=="1"){
+					document.getElementById('MiddleLeft').value="X";
+				}
+				if(Random3=="2"){
+					document.getElementById('MiddleRight').value="X";
+				}
+			}
+		}
+		if(TC=="8"){
+			if(TL==""){
+				document.getElementById('TopLeft').value="X";
+			}
+			if(TM==""){
+				document.getElementById('TopMiddle').value="X";
+			}
+			if(TR==""){
+				document.getElementById('TopRight').value="X";
+			}
+			if(ML==""){
+				document.getElementById('MiddleLeft').value="X";
+			}
+			if(MM==""){
+				document.getElementById('MiddleMidddle').value="X";
+			}
+			if(MR==""){
+				document.getElementById('MiddleRight').value="X";
+			}
+			if(BL==""){
+				document.getElementById('BottomLeft').value="X";
+			}
+			if(BM==""){
+				document.getElementById('BottomMiddle').value="X";
+			}
+			if(BR==""){
+				document.getElementById('BottomRight').value="X";
+			}
 		}
 		changeTurn();
 		checkForWin();
