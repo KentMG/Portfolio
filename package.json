@@ -1,0 +1,24 @@
+{
+  "name": "Kent-Gunns-Portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Frontend/Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Frontend/Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KentMG/Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KentMG/Portfolio/issues"
+  },
+  "homepage": "https://github.com/KentMG/Portfolio#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}
