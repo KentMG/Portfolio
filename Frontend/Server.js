@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 });
 
 app.use(express.static(path.join(__dirname + '/')));
-app.listen(port, function () {
+app.listen(process.env.PORT || 5000, function () {
     console.log('Server listening on port ' + port);
 });
 // var mysql = require('mysql');
