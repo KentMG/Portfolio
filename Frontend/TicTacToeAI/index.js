@@ -140,7 +140,7 @@ function setPlayerCount(value){
 	}
 	if(value=="2 Player"){
 		document.getElementById('playerCount').innerHTML="2";
-		//document.getElementById('0player').style.display='none';
+		document.getElementById('0player').style.display='none';
 		document.getElementById('1player').style.display='none';
 		document.getElementById('2player').style.display='none';
 		viewBoard();
