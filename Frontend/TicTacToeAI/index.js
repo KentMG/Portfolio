@@ -744,10 +744,6 @@ function resetGame(){
 	document.getElementById('BottomRight').value="";
 	document.getElementById('gameReset').style.visibility='hidden';
 	if(value=="0 Player"){
-		viewBoard();
-		document.getElementById('0player').style.display='none';
-		document.getElementById('1player').style.display='none';
-		document.getElementById('2player').style.display='none';
 		document.getElementById('MiddleMiddle').value="X";
 		document.getElementById('TurnCount').innerHTML="1";
 		document.getElementById('TurnIndicator').innerHTML="O's Turn";
