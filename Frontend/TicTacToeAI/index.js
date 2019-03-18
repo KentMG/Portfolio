@@ -134,7 +134,7 @@ function setPlayerCount(value){
 		document.getElementById('playerCount').innerHTML="1";
 		document.getElementById('playerX').style.display='inline';
 		document.getElementById('playerO').style.display='inline';
-		//document.getElementById('0player').style.display='none';
+		document.getElementById('0player').style.display='none';
 		document.getElementById('1player').style.display='none';
 		document.getElementById('2player').style.display='none';
 	}
